@@ -1,0 +1,39 @@
+\section{Stylizing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Colors}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Marks}
+
+\href{https://tex.stackexchange.com/questions/45275/tikz-get-values-for-predefined-dash-patterns}{line patterns}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Number Formatting}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Annotations \& Labeling}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+symbolic y coords\\
+nodes near coords\\
+\end{minipage}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Tikz Interaction}
+\textit{Use }\texttt{disabledatascaling}\textit{ opt\textquotesingle n to coerce tikz to pgfplots coord system. Then Tikz accordingly, eg:}
+
+\code{\textbackslash draw[thick,<->] (\$(\textbackslash x,\{sin(2 * \textbackslash x)\})\$) -{}- \dots} %(\$(\{\x+2*3.14},{sin(2 * \x - 3.14/4)})$)} 
+\\

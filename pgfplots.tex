@@ -1,0 +1,50 @@
+\section{\href{http://mirrors.ctan.org/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf}{Pgfplots}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Syntax}
+
+\begin{minipage}{6.5cm}
+\begin{lstlisting}
+\begin{tikzpicture}
+ \begin{axis}[<ax_option>*]
+  [\addplot[+|3][<pl_option>*]<plot>]+
+  [\draw{...}]*
+  [\node{...}]*
+  [\legend[]]?
+\end{tikzpicture}
+\end{lstlisting}
+\end{minipage}
+
+\textit{There are a large number of }\texttt{<ax\_option>}\textit{ and }\texttt{<pl\_option>}\textit{s, each of which are of the following types: {\color{blue}flags\textsuperscript{F}}, {\color{blue}styles\textsuperscript{S}}, or {\color{blue}keys}\textsuperscript{K}. All options can be set for an axis or plot as indicated, and many can be set for different scopes (optionally delimited with \{\} braces) using }\texttt{\textbackslash pgfplotsset\{\dots\}}\textit{. Assign } \texttt{\textbackslash empty} \textit{ for non-drawn entity. Each option is described below, in the sections relevant to the graphical behavior controlled.}\\
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Examples}
+\textit{Many more examples \href{http://pgfplots.sourceforge.net/gallery.html}{\underline{here}}!}\\[1mm]
+\entry{45mm}{\textbackslash begin\{tikzpicture\}}{tikz envmt}\\
+\entry{45mm}{\textbackslash begin\{axis\}}{pgfplot axis}\\
+\entry{45mm}{[legend cell align=left,}{<ax\_optns>}\\
+\entry{45mm}{legend pos=outer north east]}{\dots}\\
+\entry{45mm}{\phantom{xx} \textbackslash addplot coord's \{(0,0) (1,1)\};}{coords}\\
+\entry{45mm}{\phantom{xx} \textbackslash addplot+[\dots] coord's \dots;}{appnd opts}\\
+\entry{45mm}{\phantom{xx} \textbackslash addplot \{ sin(x)\};}{math expr}\\
+\entry{45mm}{\phantom{xx} \textbackslash legend\{a,fine,legend\}}{legend}\\
+\entry{45mm}{\textbackslash end\{axis\}}{}\\
+\entry{45mm}{\textbackslash end\{tikzpicture\}}{}\\
+ \ \\
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Plot-level Settings}
+
+{\begin{multicols}{2}
+\begin{itemize}[label={}]
+    \item {[ultra]thick}
+    \item <color>
+\end{itemize}
+\end{multicols}}
+
+

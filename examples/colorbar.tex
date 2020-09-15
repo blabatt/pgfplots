@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+\begin{axis}[colorbar horizontal]
+    \addplot[only marks,scatter,scatter src={mod(\coordindex,15)},samples=150,] {rand};
+\end{axis}
+\end{tikzpicture}

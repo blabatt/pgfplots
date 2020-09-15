@@ -1,0 +1,99 @@
+\section{Addplot Command}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Syntax}
+\begin{lstlisting}
+\addplot coordinates (<tuple>)*
+\addplot fill between[...]
+\addplot table {file.dat}
+\addplot table <inline_data_row>*
+\addplot {<math_expression>}
+\addplot gnuplot {<gnuplot_code>}
+\addplot graphics {<image_file>}
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Coordinates}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp.table}{Tables}}
+
+\textit{Map dataset columns to plot variables using }\texttt{\color{blue}x}\textit{, }\texttt{\color{blue}y}\textit{ keys. Further processing available with }\href{\docurl\#pgfp./pgfplots/table/x}{\texttt{\color{blue}x expr}}\textit{, }\href{\docurl\#pgfp./pgfplots/table/y}{\texttt{\color{blue}y expr}}\textit{ keys. Inside such expressions, the following helper macros are available:}
+\begin{minipage}{1.3cm}
+\textbackslash thisrow
+\end{minipage}
+\begin{minipage}{1.7cm}
+\textbackslash thisrowno
+\end{minipage}
+\begin{minipage}{1.8cm}
+\textbackslash coordindex
+\end{minipage}
+\begin{minipage}{1.3cm}
+\textbackslash lineno
+\end{minipage}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp.expression}{Expressions}}
+\textit{By default, will plot \say{marks} at 20 \say{samples} along the function described by }\texttt{<expression>}\textit{, connecting each with piecewise line segments. Use }\href{\docurl\#pgfp./tikz/smooth}{\texttt{\color{blue}smooth}}\textit{ for Bezier interconnections, instead.}\\
+\code{\textbackslash addplot[smooth,samples=50,mark=none]}\\
+\code{\phantom{xxx}\{x\textasciicircum 2\};}\\
+
+\textit{$\Delta$ default to radians using }\href{\docurl\#pgfp./pgfplots/trig:format:plots}{\texttt{\color{blue}trig format plots}}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{http://www.gnuplot.info/documentation.html}{Gnuplot}}
+
+\code{\textbackslash addplot gnuplot [id=exp,domain=0:10] }\\
+\code{\phantom{xxx}\{exp(x)\};}\\
+\code{\textbackslash addplot3[contour gnuplot]\{exp(0-x\textasciicircum 2-y\textasciicircum 2)\};}\\
+
+\textit{Options exclusive to gnuplotting in pgfplots:}\\
+{\color{blue} \begin{minipage}[t]{3.0cm}
+\href{\docurl\#pgfp./pgfplots/translate:gnuplot}{translate gnuplot}\\
+\href{\docurl\#pgfp./tikz/id}{id}\\
+prefix\\
+\href{\docurl\#pgfp./tikz/raw:gnuplot}{raw gnuplot}\\
+\end{minipage}\begin{minipage}[t]{3.0cm}
+\href{\docurl\#pgfp./pgfplots/parametric}{parametric}\\
+\href{\docurl\#pgfp./pgfplots/parametric/var:1d}{parametric/var 1d}\\
+\href{\docurl\#pgfp./pgfplots/parametric/var:2d}{parametric/var 2d}\\
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Fill Between}
+
+\textit{Do something like:}\\
+\href{\docurl\#pgfp.fill:between}{\code{\textbackslash addplot[gray] fill between }}\\
+\code{\phantom{xxx}[of=A and B,soft clip=\{domain=3:4\},];}\\
+\textit{... where $A$ and $B$ are previously-constructed tikz or pgfplots \say{named paths.}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Graphics Plotting}
+\textit{Position image with }\href{\docurl\#pgfp./pgfplots/plot:graphics/xmin}{\texttt{[{\color{blue}x}|{\color{blue}y}][{\color{blue}min}|{\color{blue}max}]}}\textit{; process with }\href{\docurl\#pgfp./pgfplots/includegraphics}{\texttt{\color{blue}includegraphics}}\textit{, which passes parameters to }\texttt{\textbackslash node[]\{\textbackslash includgraphics[\dots]\{\dots\}\}}\textit{. Control default node parameters with }\href{\docurl\#pgfp./pgfplots/plot:graphics/node}{\texttt{\color{blue}node/.style}}\textit{ key.}\\
+\code{\textbackslash addplot graphics}\\
+\code{\phantom{xxx}[xmin=0,xmax=1,
+ymin=0,ymax=1,}\\
+\code{\phantom{xxx}includegraphics=\{trim=12 9 12 8,clip\}] }
+\code{\phantom{xxx}\{external.file\};}\\
+\textit{It is possible to overlay PGFPlots axes onto 3D graphics, but is more tedious, and requires mapping 3D points to 2D canvas points. See \underline{\href{https://tex.stackexchange.com/questions/52987/3-dimensional-histogram-in-pgfplots}{here}}.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Parametric Plots}
+\textit{Can change }\href{\docurl\#pgfp./pgfplots/variable}{\opt{variable}}\textit{, but must set }\href{\docurl\#pgfp./pgfplots/domain}{\opt{domain}}\textit{:}\\
+\code{\textbackslash addplot [variable=t,domain=0:2*pi]}\\
+\code{\phantom{xxx}\{(sin(t),2*cos(t))\}}\\
+

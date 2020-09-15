@@ -1,0 +1,370 @@
+\section{Plot Types}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./tikz/sharp:plot}{Line}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/3d-line}}
+\end{wrapfigure}
+
+
+\textit{Direct piecewise connections between samples are the default. Use }\opt{sharp plot}\textit{ to indicate explicitly, or change to }\href{\docurl\#pgfp./tikz/smooth}{\opt{smooth}}\textit{ for Bezier interconnections. Create \href{\docurl\#pgfp.back/addplot3}{3D line plots} by passing 3d tuples into }\texttt{\textbackslash addplot3}\textit{.}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/hist}{Constant}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/constant}}
+\end{wrapfigure}
+\textit{Graphs with horizontal line connections. Options control placement of segments relative to coordinates, and whether vertical segments also shown.}
+
+{\color{blue}
+\begin{minipage}[t]{3.5cm}
+const plot mark left\\
+const plot mark right\\
+const plot mark mid
+\end{minipage}
+\begin{minipage}[t]{2.8cm}
+jump mark left\\
+jump mark right\\
+jump mark mid
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/xbar}{Bar}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/bar}}
+\end{wrapfigure}
+\opt{[x|y]bar}\textit{, indicated at \underline{axis} level, affords bar charts in either x or y direction. Each }\texttt{\textbackslash addplot}\textit{ contributes an additional series. Options apply at axis level as well (except those marked with *):}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+xbar\\
+ybar\\
+bar shift auto\\
+update limits
+\end{minipage}
+\begin{minipage}[t]{3.0cm}
+bar width\\
+enlarge [x|y] limits\\
+pattern\\
+bar cycle list
+\end{minipage}}
+
+\textit{Use }\opt{bar cycle list}\textit{ to install new styles for different series. A different graph altogether is }\opt{[x|y]bar interval}\textit{ which, together with }\opt{[x|y|z]ticklabel interval boundaries}\textit{ allows for bars of differing widths.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/hist}{Histogram}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/hist}}
+\end{wrapfigure}
+
+\textit{Hist\textquotesingle s take }\texttt{addplot table}\textit{ or }\texttt{<expression>}\textit{ commands. Data must be single column.}\\
+\code{\textbackslash addplot+ [hist=\{bins=3\}] }\\
+\code{\phantom{xxx} table \dots }\\
+\code{\textbackslash addplot+ [samples=200,hist] \{rnd\};}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+data\\
+data min\\
+data max\\
+bins\\
+symbolic coords\\
+data coord trafo
+\end{minipage}
+\begin{minipage}[t]{3.0cm}
+intervals\\
+cumulative\\
+density\\
+handler\\
+data filter\\
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/box}{Box}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/box}}
+\end{wrapfigure}
+
+\textit{Can adjust orientation, box thickness, outlier distance, quartile thresholds, \say{whisker} styling, etc, with the following:}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+\end{minipage}
+\begin{minipage}[t]{3.0cm}
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./tikz/xcomb}{Comb}}
+
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/comb}}
+\end{wrapfigure}
+
+\textit{Similar to bar chart, but with lines rather than bars. As with bar, indicate with a set of coordinates:}\\
+\code{\textbackslash addplot+[xcomb] coordinates \dots}\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/quiver}{Quiver}}
+
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/quiver}}
+\end{wrapfigure}
+
+\textit{Requires a vector input $(u,v)$ that will calculate respective $(x,y)$ components of each \say{quiver. Works readily with parametrics (using }\texttt{variable=t}\textit{) \& tables of predefined $(x,y,u,v)$ vectors.} }\\
+
+\begin{wrapfigure}[4]{l}{2.2cm}
+\vspace{-6mm}
+\resizebox{2cm}{!}{\input{examples/3d-quiver}}
+\end{wrapfigure}
+
+\textit{Often used to visualize tangent \& gradient fields (using \href{\docurl\#pgfp./pgfplots/quiver/w}{3D quivers}). Set }\href{\docurl\#pgfp./pgfplots/quiver/w}{\opt{w}}\textit{ for 3rd dimension.}\\
+
+{\color{blue}
+\begin{minipage}[t]{1.0cm}
+u\\
+v\\
+w\\
+\end{minipage}
+\begin{minipage}[t]{2.5cm}
+colored\\
+scale arrows\\
+update limits\\
+every arrow\\
+\end{minipage}
+\begin{minipage}[t]{2.2cm}
+before arrow\\
+after arrow\\
+quiver legend
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/stack:plots}{Stacked}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/stacked}}
+\end{wrapfigure}
+
+\textit{Initiate basic stacking with }\href{\docurl\#pgfp./pgfplots/stack:plot}{\opt{stack plots}}\texttt{=y|x}\textit{, or stacked bars with, eg, }\href{\docurl\#pgfg./pgfplots/ybar:stacked}{\opt{ybar stacked}}\textit{. Given coordinates for each }\texttt{\textbackslash addplot}\textit{ line up positionally to comprise each of the plot\textquotesingle s \say{series\textquotesingle.} Can also stack in negative direction.}
+
+{\color{blue}
+\begin{minipage}[t]{2.5cm}
+ybar stacked\\
+xbar stacked\\
+stack dir\\
+stack negative
+\end{minipage}
+\begin{minipage}[t]{3.5cm}
+reverse stacked plots\\
+stacked ignores zero\\
+xbar interval stacked\\
+ybar interval stacked\\
+bar shift auto
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/z:buffer}{Mesh}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/3d-mesh}}
+\end{wrapfigure}
+
+\textit{Available as 2D or, as is more customary, 3D. Invoke with }\href{pgfp\#./pgfplots/mesh}{\opt{mesh}}\textit{. Default mapping from $y$ to colormap. Change this using }\href{\docurl\#pgfp./pgfp/pgfplots/point:meta}{\opt{point meta}}\textit{.}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/area:style}{Area}}
+
+
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/area}}
+\end{wrapfigure}
+
+
+\textit{For simple areas use stacking in addition to }\href{\docurl\#.pgfp/pgfplots/area:style}{\opt{area style}}\textit{. Can also use }\texttt{\href{\docurl\#pgfp.fill:between}{\textbackslash addplot fill between}}\textit{ in other plot types to achieve a fill affect, or use }\texttt{\href{\docurl\#pgfp.back/closedcycle}{\textbackslash closedcycle}}\textit{ at end of }\texttt{\textbackslash addplot}\textit{ to close a drawn path. Further restrict areas  by setting }\href{\docurl\#pgfp.soft:clip}{\opt{soft clip}}\textit{ key to a previously-defined \say{clip.}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/scatter}{Scatter}}
+
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/scatter}}
+\end{wrapfigure}
+
+\textit{For simple scatter plots, use }\href{\docurl\#pgfp./tikz/only:marks}{\opt{only marks}}\textit{ For more control over marks, including styling (eg by color), and \say{classing} into groups, use }\href{\docurl\#pgfp./pfgplots/scatter}{\opt{scatter}}\textit{. \say{\href{\docurl\#pgfp./pgfplots/scatter/classes}{Classes}} allow styling by ordinal metadata set using }\href{\docurl\#pgfp./pgfplots/scatter:src}{\opt{scatter src}}\textit{ or }\href{\docurl\#pgfp./pgfp/pgfplots/point:meta}{\opt{point meta}}\textit{. Easily extended to 3D axes, which consume 3d vectors.}
+
+{\color{blue}
+\begin{minipage}[t]{2.5cm}
+scatter src\\
+classes
+\end{minipage}
+\begin{minipage}[t]{3.5cm}
+use mapped color\\
+scatter position
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./tikz/tieline}{Ternary Diagram \& Tieline}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/ternary}}
+\end{wrapfigure}
+
+\textit{Requires \say{ternaryaxis} package. Plots to a \say{Barycentric} coordinate system, requiring that relative coordinates that are correctly specified. }
+
+\begin{comment}
+\begin{wrapfigure}[2]{l}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/tieline}}
+\end{wrapfigure}
+\end{comment}
+
+\textit{\say{Tielines} are binodal curves in a ternary coordinate plane.}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+every ternary axis\\
+tieline
+\end{minipage}
+\begin{minipage}[t]{3.3cm}
+ternary limits relative\\
+tieline style\\
+curve style
+\end{minipage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp.smithchart}{Smith}}
+
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/smith}}
+\end{wrapfigure}
+
+\textit{Requires external \say{smithchart} library. Can plot coords or lines onto this coordinate system, can invert the chart into a \say{admittance} chart, and can manipulate size and ticks. Low-level grid-line control with }\href{}{\opt{x|ygrid each nth passes y}}\textit{ and }\href{}{\opt{x|ygrid stop at x|y}}\textit{.}
+
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+smithchart mirrored\\
+show origin\\
+ytick label in circle\\
+few smithchart ticks\\
+every smithchart axis
+\end{minipage}
+\begin{minipage}[t]{3.3cm}
+ytick label ar\textquotesingle nd circle\\
+ytick label ar\textquotesingle nd circle*\\
+many smithchart ticks\\
+dense smithchart ticks\\
+default s.c. x|ytick
+\end{minipage}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/contour:prepared}{Contour}}
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/3d-contour}}
+\end{wrapfigure}
+
+\textit{3D contours, like topo charts. Use }\href{\docurl\#pgfp./pgfplots/contour:prepared}{\opt{contour prepared}}\textit{ or }\href{\docurl\#pgfp./pgfplots/contour:gnuplot}{\opt{contour gnuplot}}\textit{ for contour input, the former which takes matrix-style input, and the latter which creates these matrices and passes them to the former.}
+
+{\color{blue}
+\begin{minipage}[t]{3.0cm}
+number\\
+levels\\
+draw color\\
+labels\\
+contour external\\
+contour gnuplot\\
+contour filled
+\end{minipage}
+\begin{minipage}[t]{3.3cm}
+contour prep\textquotesingle d format\\
+contour dir\\
+contour label style\\
+label distance\\
+labels over line\\
+label node code\\
+\end{minipage}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/surf}{Surface}}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/3d-surface}}
+\end{wrapfigure}
+
+\textit{Visualize 3D surfaces, which are--unlike with meshes--filled. Easiest to create with }\texttt{<expression>}\textit{ but can also create with }\texttt{table}\textit{ or }\texttt{coordinates}\textit{. Choosing from various \say{shaders} affords control over color gradients on each patch. }\texttt{Colormaps}\textit{ are inherited from the }\texttt{axis}\textit{, but can be overridden. For lower-level control of color interpolations, set }\href{\docurl\#pgfp./pgfplots/mesh/color:input}{\opt{mesh/color input}}\textit{. This works with }\href{\docurl\#pgfp./pgfplots/z:buffer}{\opt{mesh}}\textit{, }\href{\docurl\#pgfp./pgfplots/patch}{\opt{patch}}\textit{ or }\href{\docurl\#pgfp./pgfplots/surf}{\opt{surf}}\textit{.}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{\docurl\#pgfp./pgfplots/patch}{Patch}}
+
+\begin{comment}
+
+\begin{wrapfigure}[5]{r}{2.2cm}
+\vspace{-8mm}
+\resizebox{2cm}{!}{\input{examples/3d-line}}
+\end{wrapfigure}
+
+\blindtext
+\end{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Regression}
+

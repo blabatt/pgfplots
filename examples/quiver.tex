@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{axis}[title=Quiver and plot table]
+    \addplot[blue,
+        quiver={u=\thisrow{u},v=\thisrow{v}},
+        -stealth] 
+	table 
+	{
+	x y u v
+	0 0 1 0
+	1 1 1 1
+	2 4 1 4
+	3 9 1 6
+	4 16 1 8
+	};
+\end{axis}
+\end{tikzpicture}

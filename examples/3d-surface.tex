@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+\begin{axis}[grid=major,colormap/viridis,]
+
+\addplot3 [surf,samples=30,domain=0:1,] {5*x*sin(2*deg(x)) * y};
+
+\end{axis}
+\end{tikzpicture}
